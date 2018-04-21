@@ -3,6 +3,21 @@
 So I'm practicing with blockchain. I will use blocktrain in android app later.
 
 ```java
+Block myBlock1 = new Block("Some information"); // This block automatically added to train
+Train.getTrain(); // Returns List of Block objects
+
+myBlock1.getHash();
+myBlock1.getPreviousHash();
+myBlock1.getMessage(); // Some information
+myBlock1.getFullMessage(); // Some information - 1524334576106
+
+// 1524334576106 is a number of milliseconds passed since 1970
+```
+
+
+**Examle output**:
+```java
+
 
 1 : MESSAGE : Hello, Trevor
 1 : FULL MESSAGE : Hello, Trevor - 1524334576106
