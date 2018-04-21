@@ -1,5 +1,7 @@
 package model;
 
+import misc._Error;
+
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -21,14 +23,24 @@ public class Block
         Date now = new Date();
         this.message = message;
 
-        if(Train.getTrain().size() == 0) // Our block is first in the list, there are no previous block
+        if(Train.getTrain().size() == 0) // Our block is first in the list, there are no previous blocks
             this.previousHash = "none";
         else
             this.previousHash = Train.getTrain().get(Train.getTrain().size()-1).getHash();
 
-        this.time = now.getTime();
+        this.time = now.getTime(); // It gets milliseconds from 1970
         this.createdOn = String.valueOf(now);
+
+        /*
+            We add current time to out message to make it unique
+            For example some phrase (e.g Hello world) won't be the same after being encrypted many times
+            Besides message there is a time stamp
+            e.g [Hello world - 1524324739553] (this number is milliseconds from 1970 to now)
+            And message divided from timestamp using dash
+         */
+
         this.fullMessage = message + " - " + time;
+
 
         try {
             this.hash = Encrypt.toSHA256(this.fullMessage);
@@ -38,8 +50,7 @@ public class Block
             e.printStackTrace();
         }
 
-        Train.addBlock(Block.this);
-
+        Train.addBlock(Block.this); // Add out block at the end of the train
     }
 
     /*
@@ -48,27 +59,33 @@ public class Block
 
     */
 
-    public String getHash() {
+    public String getHash()
+    {
         return hash;
     }
 
-    public String getPreviousHash() {
+    public String getPreviousHash()
+    {
         return previousHash;
     }
 
-    public String getMessage() {
+    public String getMessage()
+    {
         return message;
     }
 
-    public String getCreatedOn() {
+    public String getCreatedOn()
+    {
         return createdOn;
     }
 
-    public long getTime() {
+    public long getTime()
+    {
         return time;
     }
 
-    public String getFullMessage() {
+    public String getFullMessage()
+    {
         return fullMessage;
     }
 }

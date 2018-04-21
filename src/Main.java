@@ -6,9 +6,13 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Block myBlock = new Block("Hello there");
-        Block myBlock2 = new Block("Hello to you");
-        Block myBlock3 = new Block("Hello");
+
+        String[] names = {"John", "Ben", "Dan", "Anna", "Rickie", "Michael", "Franklin", "Trevor", "Amanda"};
+
+        for(int q = 0; q < 5; q++)
+        {
+            new Block("Hello, " + names[(int) Math.floor(Math.random() * names.length)]);
+        }
 
         for(int i = 0; i < Train.getTrain().size(); i++)
         {
@@ -20,5 +24,7 @@ public class Main
         }
 
         new Log(Train.getTrain());
+
+        new Log(Train.isChainValid());
     }
 }

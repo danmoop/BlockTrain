@@ -1,8 +1,8 @@
 package misc;
 
-public class Error
+public class _Error
 {
-    public Error(String error)
+    public _Error(String error)
     {
         throw new java.lang.Error(error);
     }
