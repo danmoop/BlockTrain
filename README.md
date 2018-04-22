@@ -1,7 +1,5 @@
 # BlockTrain
 
-So I'm practicing with blockchain. I will use blocktrain in android app later.
-
 ```java
 Block myBlock1 = new Block("Some information"); // This block automatically added to train
 Train.getTrain(); // Returns List of Block objects
